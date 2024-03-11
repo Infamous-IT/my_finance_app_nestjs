@@ -5,8 +5,7 @@ import { JwtAuthGuard } from '../guards/JwtAuthGuard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {
-  }
+  constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
@@ -16,7 +15,7 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  getProfile(@Request() req){
+  getProfile(@Request() req) {
     return req.user;
   }
 }
