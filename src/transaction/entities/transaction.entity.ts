@@ -1,40 +1,40 @@
 import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
+	Column,
+	CreateDateColumn,
+	Entity,
+	JoinColumn,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn,
 } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Category } from '../../category/entities/category.entity';
 
 @Entity()
 export class Transaction {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column()
-  title: string;
+	@Column()
+	title: string;
 
-  @Column({ nullable: true })
-  type: string;
+	@Column({ nullable: true })
+	type: string;
 
-  @Column()
-  amount: number;
+	@Column()
+	amount: number;
 
-  @ManyToOne(() => User, (user) => user.transactions)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+	@ManyToOne(() => User, (user) => user.transactions)
+	@JoinColumn({ name: 'user_id' })
+	user: User;
 
-  @ManyToOne(() => Category, (category) => category.transactions)
-  @JoinColumn({ name: 'category_id' })
-  categories: Category;
+	@ManyToOne(() => Category, (category) => category.transactions)
+	@JoinColumn({ name: 'category_id' })
+	categories: Category;
 
-  @CreateDateColumn()
-  createdAt: Date;
+	@CreateDateColumn()
+	createdAt: Date;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+	@UpdateDateColumn()
+	updatedAt: Date;
 }
